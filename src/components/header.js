@@ -6,12 +6,12 @@ export default function Header() {
 
     <header >
       <div className="container mx-auto">
-        <div className="flex items-center">
-          <div className="w-1/2">
-            <img src={logo} alt="logo" />
+        <div className="flex flex-col lg:flex-row items-center sm:flex-col md:flex-col">
+          <div className="sm:w-full md:w-1/2">
+            <img src={logo} alt="logo" className='mx-auto mb-4 lg:mb-0 ' />
           </div>
-          <div className='w-1/2 font-bold uppercase tagline'>
-            <span className='block text-xl'>Organizing the World's Waste</span>
+          <div className='sm:w-full md:w-1/2 font-bold uppercase tagline'>
+            <span className='block text-lg lg:text-xl'>Organizing the World's Waste</span>
             <span className='block text-2xl'>Plastic physically and digitally.</span>
           </div>
         </div>
