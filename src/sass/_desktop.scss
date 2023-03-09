@@ -77,7 +77,7 @@ form.form-steps {
     width: 100%;
     height: 100%;
     position: absolute;
-    border-radius: 5px;
+    border-radius: 15px;
   }
 
   &::before {
@@ -103,7 +103,7 @@ form.form-steps {
 
 .content-wrapper {
   padding-top: 160px;
-  min-height: calc(100vh - 20px);
+  min-height: 100vh;
 }
 
 .form-wrapper {
@@ -111,7 +111,7 @@ form.form-steps {
   padding: 25px 20px 100px;
   position: relative;
   z-index: 10;
-  border-radius: 5px;
+  border-radius: 15px;
 
   .bg-gray {
     background: #D9D9D9;
@@ -123,11 +123,22 @@ form.form-steps {
     border-radius: 5px;
     font-weight: bold;
     transition: all 0.3s linear;
+    cursor: pointer;
 
     &:hover,
     &:focus,
     &:active {
       background: darken(#D9D9D9, 10);
+    }
+
+    &.btn-white {
+      background: #D9D9D9;
+
+      &:hover,
+      &:focus,
+      &:active {
+        background: #fff;
+      }
     }
   }
 
@@ -284,6 +295,7 @@ form.form-steps {
   }
 
   .footer-text {
+    padding-top: 40px;
     padding-right: 60px;
     position: relative;
 
@@ -314,6 +326,52 @@ footer {
     img {
       display: block;
       max-width: 22px;
+    }
+  }
+}
+
+.carousel {
+
+  .title {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    padding-bottom: 15px;
+    border-bottom: solid 1px #fff;
+    letter-spacing: 0.04em;
+  }
+
+  .slick-slide {
+
+    .text-box {
+      opacity: 0;
+      transition: all 0.4s ease-in;
+    }
+
+    &.slick-active .text-box {
+      opacity: 1;
+      transition: all 0.4s ease-in;
+    }
+  }
+
+  &.problem {
+    background: #545454;
+
+    .title {
+      color: #fff;
+    }
+
+    .text-box {
+      color: #fff;
+    }
+  }
+
+  &.solution {
+    border: solid 2px #545454;
+
+    .title {
+      color: #545454;
     }
   }
 }

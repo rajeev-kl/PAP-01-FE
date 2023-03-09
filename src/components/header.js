@@ -6,9 +6,9 @@ export default function Header() {
 
     <header >
       <div className="container mx-auto">
-        <div className="flex flex-col lg:flex-row items-center sm:flex-col md:flex-col">
+        <div className="flex flex-col lg:flex-row items-center">
           <div className="sm:w-full md:w-1/2">
-            <img src={logo} alt="logo" className='mx-auto mb-4 lg:mb-0 ' />
+            <img src={logo} alt="logo" className='mb-4 lg:mb-0 ' />
           </div>
           <div className='sm:w-full md:w-1/2 font-bold uppercase tagline'>
             <span className='block text-lg lg:text-xl'>Organizing the World's Waste</span>
