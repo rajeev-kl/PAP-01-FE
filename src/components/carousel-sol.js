@@ -13,14 +13,23 @@ export default function carouselSol() {
     autoplay: true,
     autoplaySpeed: 4000,
     speed: 500,
-    dots: true
+    dots: true,
+    arrows: false,
+    responsive: [
+      {
+        breakpoint: 640,
+        settings: {
+          centerPadding: "0px",
+        }
+      }
+    ]
   };
 
   return (
     <Slider {...settings}>
       <div>
         <div className="mx-4">
-          <div className="images my-8">
+          <div className="photo my-8">
             <div className="h-60 bg-gray-400 rounded"></div>
           </div>
           <div className="text-box">
@@ -31,7 +40,7 @@ export default function carouselSol() {
       </div>
       <div>
         <div className="mx-4">
-          <div className="images my-8">
+          <div className="photo my-8">
             <div className="h-60 bg-gray-400 rounded"></div>
           </div>
           <div className="text-box">
@@ -42,7 +51,7 @@ export default function carouselSol() {
       </div>
       <div>
         <div className="mx-4">
-          <div className="images my-8">
+          <div className="photo my-8">
             <div className="h-60 bg-gray-400 rounded"></div>
           </div>
           <div className="text-box">

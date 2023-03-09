@@ -10,6 +10,7 @@ import wastage from './assets/wastage.svg'
 import gobleIcon from './assets/globe-icon.svg'
 import bags from './assets/bags.svg'
 import arrowTop from './assets/arrow-top.svg'
+import pic from './assets/image1.png'
 import Autocomplete from './components/Autocomplete';
 import axios from "axios"
 
@@ -18,10 +19,10 @@ function App() {
   const [inputs, setInputs] = useState({ org_name: "", role: "" });
   const [selected, setSelected] = useState({});
   const [value, setValue] = useState({});
-  const [showStepOne, setshowStepOne] = useState(true);
+  const [showStepOne, setshowStepOne] = useState(false);
   const [showStepTwo, setshowStepTwo] = useState(false);
   const [showStepThree, setshowStepThree] = useState(false);
-  const [showStepFinal, setshowStepFinal] = useState(false);
+  const [showStepFinal, setshowStepFinal] = useState(true);
 
   useEffect(() => {
     axios.get(`https://loop.prodot.in/pap-01/api/country/`).then(res => setCountries(res.data)).catch(err => err)
@@ -35,6 +36,8 @@ function App() {
     setValue(selected)
     showSecond()
   }
+
+  console.log(value);
 
   const showFirst = () => {
     setValue({})
@@ -169,9 +172,9 @@ function App() {
                     <div className="mt-3 lg:ml-auto lg:mt-0">
                       <div className="flex items-stretch">
                         <span className="flag p-2 rounded mr-4">
-                          <Flag country="US" size={46} className="block" />
+                          <Flag country={value.country_code} size={46} className="block" />
                         </span>
-                        <span className="country bg-gray py-2 text-center rounded font-bold truncate" title='United States'>United States</span>
+                        <span className="country bg-gray py-2 text-center rounded font-bold truncate" title={value.country}>{value.country}</span>
                       </div>
                     </div>
                   </div>
@@ -221,7 +224,7 @@ function App() {
                     <div className="ml-auto">
                       <div className="flex items-stretch">
                         <span className="flag p-2 rounded mr-4">
-                          <Flag country="US" size={46} className="block" />
+                          <Flag country={value.country_code} size={46} className="block" />
                         </span>
                         <span className="country bg-gray py-2 text-center rounded font-bold truncate" title={value.country}>{value.country}</span>
                       </div>
@@ -232,11 +235,6 @@ function App() {
                     <span className="text-3xl text-gray-900 block font-semibold mb-2 truncate" title={value.waste_generated}>{value.waste_generated || "N/A"}</span>
                     <span className="text-xl text-gray font-semibold">Plastic waste generated (T/Yr)</span>
                   </div>
-
-                  {/* <div className="text-center pb-10 pt-2">
-                    <span className="text-3xl text-gray-900 block font-semibold mb-2 truncate" title="N/A">N/A</span>
-                    <span className="text-xl text-gray font-semibold">Plastic waste Mismanaged (T/Yr)</span>
-                  </div> */}
 
                   <div className="flex flex-col lg:flex-row items-center lg:items-start pb-10">
                     <div className="w-full lg:w-1/3 text-center mb-4 lg:mb-0">
@@ -257,12 +255,12 @@ function App() {
 
                   <div className="flex flex-col lg:flex-row items-center lg:items-start ">
                     <div className="w-full lg:w-1/2 text-center mb-4 lg:mb-0">
-                      <div className="text-2xl font-bold mb-1">{value.machines || "N/A"}</div>
+                      <div className="text-2xl font-bold mb-1">{value.machines_required || "N/A"}</div>
                       <div className="text-sm font-semibold text-gray">Number of Machines Required in</div>
                       <div className="text-sm font-semibold text-gray">India to solve the problem</div>
                     </div>
                     <div className="w-full lg:w-1/2 text-center mb-4 lg:mb-0">
-                      <div className="text-2xl font-bold mb-1">{value.investment || "N/A"}</div>
+                      <div className="text-2xl font-bold mb-1">₹ {value.investment_required || "N/A"}</div>
                       <div className="text-sm font-semibold text-gray">Investment Required</div>
                     </div>
                   </div>
@@ -281,11 +279,11 @@ function App() {
         <div className={`pt-8 ${showStepFinal ? 'block' : 'hidden'} `}>
 
           <div className="flex flex-col lg:flex-row w-11/12 mx-auto mb-12">
-            <div className="px-6 pt-6 pb-10 w-full lg:w-1/2 carousel problem lg:mr-3 rounded-2xl">
+            <div className="lg:px-6 px-4 pt-6 pb-10 w-full lg:w-1/2 carousel problem lg:mr-3 rounded-2xl mb-8 lg:mb-0">
               <div className="title">The Problem</div>
               <CarouselProb />
             </div>
-            <div className="px-6 pt-6 pb-10 w-full lg:w-1/2 carousel solution lg:ml-3 rounded-2xl">
+            <div className="lg:px-6 px-4 pt-6 pb-10 w-full lg:w-1/2 carousel solution lg:ml-3 rounded-2xl">
               <div className="title">The Solution</div>
               <CarouselSol />
             </div>
@@ -297,9 +295,13 @@ function App() {
           </div>
 
           <div className="mx-auto w-full lg:w-3/4">
-            <div className="text-center py-14">
+            <div className="text-center pt-14 w-11/12 mx-auto">
               <h2 className='uppercase font-semibold text-4xl mb-2'>Plastic Age Action Plan</h2>
               <div className="text-2xl font-light">Let's stop burning, burying & floating plastic</div>
+            </div>
+
+            <div className="pt-10 pb-12 mx-auto w-full lg:w-11/12">
+              <img src={pic} alt="pic" />
             </div>
 
             <div className="contact-form">
