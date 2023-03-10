@@ -17,6 +17,7 @@ const Autocomplete = ({ options = [], onChange = () => { }, selected = {}, clear
       (optionName) =>
         optionName.country.toLowerCase().indexOf(userInput.toLowerCase()) > -1
     ));
+    setinputVal(e.currentTarget.value)
     setShowOptions(true)
   }
 
