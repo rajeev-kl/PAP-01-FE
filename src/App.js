@@ -10,7 +10,7 @@ import wastage from './assets/wastage.svg'
 import gobleIcon from './assets/globe-icon.svg'
 import bags from './assets/bags.svg'
 import arrowTop from './assets/arrow-top.svg'
-import pic from './assets/image1.png'
+// import pic from './assets/image1.png'
 import Autocomplete from './components/Autocomplete';
 import axios from "axios"
 
