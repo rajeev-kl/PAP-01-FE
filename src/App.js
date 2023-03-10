@@ -301,9 +301,9 @@ function App() {
               <div className="text-2xl font-light">Let's stop burning, burying & floating plastic</div>
             </div>
 
-            <div className="pt-10 pb-12 mx-auto w-full lg:w-11/12">
+            {/* <div className="pt-10 pb-12 mx-auto w-full lg:w-11/12">
               <img src={pic} alt="pic" />
-            </div>
+            </div> */}
 
             <div className="contact-form">
               <div className="text-center">
