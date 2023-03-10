@@ -17,7 +17,8 @@ const Autocomplete = ({ options = [], onChange = () => { }, selected = {}, clear
       (optionName) =>
         optionName.country.toLowerCase().indexOf(userInput.toLowerCase()) > -1
     ));
-    setShowOptions(true)
+    setinputVal(e.currentTarget.value)
+    setShowOptions(!e.currentTarget.value ? false : true)
   }
 
   const onClick = (option) => {
@@ -31,7 +32,6 @@ const Autocomplete = ({ options = [], onChange = () => { }, selected = {}, clear
     if (e.keyCode === 13) {
       onChange(filteredOptions[0])
       setShowOptions(false)
-
     }
   };
 
@@ -47,7 +47,7 @@ const Autocomplete = ({ options = [], onChange = () => { }, selected = {}, clear
       />
       {showOptions && selected &&
         <div className='options-list'>
-          {filteredOptions.length ?
+          {filteredOptions.length && showOptions ?
             <ul className="options">
               {filteredOptions.map((option) => {
                 let className;

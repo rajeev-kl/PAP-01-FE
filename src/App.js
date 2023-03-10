@@ -10,7 +10,7 @@ import wastage from './assets/wastage.svg'
 import gobleIcon from './assets/globe-icon.svg'
 import bags from './assets/bags.svg'
 import arrowTop from './assets/arrow-top.svg'
-import pic from './assets/image1.png'
+// import pic from './assets/image1.png'
 import Autocomplete from './components/Autocomplete';
 import axios from "axios"
 
@@ -19,10 +19,10 @@ function App() {
   const [inputs, setInputs] = useState({ org_name: "", role: "" });
   const [selected, setSelected] = useState({});
   const [value, setValue] = useState({});
-  const [showStepOne, setshowStepOne] = useState(false);
+  const [showStepOne, setshowStepOne] = useState(true);
   const [showStepTwo, setshowStepTwo] = useState(false);
   const [showStepThree, setshowStepThree] = useState(false);
-  const [showStepFinal, setshowStepFinal] = useState(true);
+  const [showStepFinal, setshowStepFinal] = useState(false);
 
   useEffect(() => {
     axios.get(`https://loop.prodot.in/pap-01/api/country/`).then(res => setCountries(res.data)).catch(err => err)
@@ -37,10 +37,11 @@ function App() {
     showSecond()
   }
 
-  console.log(value);
+  console.log(selected);
 
   const showFirst = () => {
     setValue({})
+    setSelected({})
     setInputs({ org_name: "", role: "" });
     setshowStepOne(true);
     setshowStepTwo(false);
@@ -69,7 +70,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <div className='container mx-auto content-wrapper'>
+      <div className='container mx-auto content-wrapper px-4'>
         <div className="flex flex-col lg:flex-row items-center">
           <div className="lg:w-1/2 lg:pr-8 mb-6 lg:mb-0">
             <img src={map} alt="map" className='mw-full' />
@@ -126,9 +127,9 @@ function App() {
                     <div className="mt-3 lg:ml-auto lg:mt-0">
                       <div className="flex items-stretch">
                         <span className="flag p-2 rounded mr-4">
-                          <Flag country={value.country_code} size={46} className="block" />
+                          <Flag country={selected.country_code} size={46} className="block" />
                         </span>
-                        <span className="country bg-gray py-2 text-center rounded font-bold truncate" title={value.country}>{value.country}</span>
+                        <span className="country bg-gray py-2 text-center rounded font-bold truncate" title={selected.country}>{selected.country}</span>
                       </div>
                     </div>
                   </div>
@@ -143,8 +144,8 @@ function App() {
 
                   <div className="country-info flex flex-col lg:flex-row justify-center py-4 items-center">
                     <div className="text-center lg:order-1 sm:order-2 mt-4 lg:mt-0 lg:mr-6">
-                      <span className="text-lg text-gray font-semibold block mb-2">{value.country} generates</span>
-                      <span className="text-4xl text-gray-900 block font-semibold mb-2">{value.waste_generated}</span>
+                      <span className="text-lg text-gray font-semibold block mb-2">{selected?.country} generates</span>
+                      <span className="text-4xl text-gray-900 block font-semibold mb-2">{selected?.waste_generated}</span>
                       <span className="text-lg text-gray font-semibold block">Plastic waste generated/annum(T)</span>
                     </div>
                     <img src={bags} alt="bags" className='max-w-full lg:order-2 sm:order-1 mt-4 lg:mt-0' />
@@ -172,9 +173,9 @@ function App() {
                     <div className="mt-3 lg:ml-auto lg:mt-0">
                       <div className="flex items-stretch">
                         <span className="flag p-2 rounded mr-4">
-                          <Flag country={value.country_code} size={46} className="block" />
+                          <Flag country={selected?.country_code} size={46} className="block" />
                         </span>
-                        <span className="country bg-gray py-2 text-center rounded font-bold truncate" title={value.country}>{value.country}</span>
+                        <span className="country bg-gray py-2 text-center rounded font-bold truncate" title={selected?.country}>{selected?.country}</span>
                       </div>
                     </div>
                   </div>
@@ -188,7 +189,7 @@ function App() {
                       </span>
                     </div>
                     <div className="mt-4 lg:mt-0 lg:ml-auto">
-                      <span className="text-3xl text-gray-900 block font-semibold mb-2 truncate" title={value.waste_generated}>{value.waste_generated}</span>
+                      <span className="text-3xl text-gray-900 block font-semibold mb-2 truncate" title={selected?.waste_generated}>{selected?.waste_generated}</span>
                     </div>
                   </div>
 
@@ -224,43 +225,43 @@ function App() {
                     <div className="ml-auto">
                       <div className="flex items-stretch">
                         <span className="flag p-2 rounded mr-4">
-                          <Flag country={value.country_code} size={46} className="block" />
+                          <Flag country={selected?.country_code} size={46} className="block" />
                         </span>
-                        <span className="country bg-gray py-2 text-center rounded font-bold truncate" title={value.country}>{value.country}</span>
+                        <span className="country bg-gray py-2 text-center rounded font-bold truncate" title={selected?.country}>{selected?.country}</span>
                       </div>
                     </div>
                   </div>
 
                   <div className="text-center pb-10 pt-2">
-                    <span className="text-3xl text-gray-900 block font-semibold mb-2 truncate" title={value.waste_generated}>{value.waste_generated || "N/A"}</span>
+                    <span className="text-3xl text-gray-900 block font-semibold mb-2 truncate" title={selected?.waste_generated}>{selected?.waste_generated || "N/A"}</span>
                     <span className="text-xl text-gray font-semibold">Plastic waste generated (T/Yr)</span>
                   </div>
 
                   <div className="flex flex-col lg:flex-row items-center lg:items-start pb-10">
                     <div className="w-full lg:w-1/3 text-center mb-4 lg:mb-0">
-                      <div className="text-2xl font-bold mb-1">{value.gdp || "N/A"}</div>
+                      <div className="text-2xl font-bold mb-1">{selected?.gdp || "N/A"}</div>
                       <div className="text-sm font-semibold text-gray">GDP(abbrev.)</div>
                       <div className="text-xs text-gray">Billions</div>
                     </div>
                     <div className="w-full lg:w-1/3 text-center mb-4 lg:mb-0">
-                      <div className="text-2xl font-bold mb-1">{value.land_area || "N/A"}</div>
+                      <div className="text-2xl font-bold mb-1">{selected?.land_area || "N/A"}</div>
                       <div className="text-sm font-semibold text-gray">Land Area(2020)</div>
                       <div className="text-xs text-gray">Sq Km</div>
                     </div>
                     <div className="w-full lg:w-1/3 text-center">
-                      <div className="text-2xl font-bold mb-1">{value.population || "N/A"}</div>
+                      <div className="text-2xl font-bold mb-1">{selected?.population || "N/A"}</div>
                       <div className="text-sm font-semibold text-gray">Population(2017)</div>
                     </div>
                   </div>
 
                   <div className="flex flex-col lg:flex-row items-center lg:items-start ">
                     <div className="w-full lg:w-1/2 text-center mb-4 lg:mb-0">
-                      <div className="text-2xl font-bold mb-1">{value.machines_required || "N/A"}</div>
+                      <div className="text-2xl font-bold mb-1">{selected?.machines_required || "N/A"}</div>
                       <div className="text-sm font-semibold text-gray">Number of Machines Required in</div>
                       <div className="text-sm font-semibold text-gray">India to solve the problem</div>
                     </div>
                     <div className="w-full lg:w-1/2 text-center mb-4 lg:mb-0">
-                      <div className="text-2xl font-bold mb-1">₹ {value.investment_required || "N/A"}</div>
+                      <div className="text-2xl font-bold mb-1">₹ {selected?.investment_required || "N/A"}</div>
                       <div className="text-sm font-semibold text-gray">Investment Required</div>
                     </div>
                   </div>
@@ -300,9 +301,9 @@ function App() {
               <div className="text-2xl font-light">Let's stop burning, burying & floating plastic</div>
             </div>
 
-            <div className="pt-10 pb-12 mx-auto w-full lg:w-11/12">
+            {/* <div className="pt-10 pb-12 mx-auto w-full lg:w-11/12">
               <img src={pic} alt="pic" />
-            </div>
+            </div> */}
 
             <div className="contact-form">
               <div className="text-center">
@@ -345,4 +346,3 @@ function App() {
 }
 
 export default App;
-
