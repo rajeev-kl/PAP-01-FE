@@ -94,7 +94,7 @@ function App() {
                     <div className="form-group w-full">
                       <label htmlFor="country" className='block country-label'>Select your country from the dropdown</label>
                       <div className="country-select">
-                        <Autocomplete options={countries} onChange={setSelected} clearVlaue={showStepOne} placeholder="Type or select country" />
+                        <Autocomplete options={countries} onChange={setSelected} value={selected.country} clearVlaue={showStepOne} placeholder="Type or select country" />
                       </div>
                     </div>
                   </div>
