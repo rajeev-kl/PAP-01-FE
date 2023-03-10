@@ -19,10 +19,10 @@ function App() {
   const [inputs, setInputs] = useState({ org_name: "", role: "" });
   const [selected, setSelected] = useState({});
   const [value, setValue] = useState({});
-  const [showStepOne, setshowStepOne] = useState(false);
+  const [showStepOne, setshowStepOne] = useState(true);
   const [showStepTwo, setshowStepTwo] = useState(false);
   const [showStepThree, setshowStepThree] = useState(false);
-  const [showStepFinal, setshowStepFinal] = useState(true);
+  const [showStepFinal, setshowStepFinal] = useState(false);
 
   useEffect(() => {
     axios.get(`https://loop.prodot.in/pap-01/api/country/`).then(res => setCountries(res.data)).catch(err => err)
@@ -41,6 +41,7 @@ function App() {
 
   const showFirst = () => {
     setValue({})
+    setSelected({})
     setInputs({ org_name: "", role: "" });
     setshowStepOne(true);
     setshowStepTwo(false);
