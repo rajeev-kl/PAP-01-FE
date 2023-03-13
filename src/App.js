@@ -118,7 +118,17 @@ function App() {
                   </div>
                   <div className="flex align-baseline pb-7 mt-5">
                     <div className="globe-icon self-end">
-                      <img src={gobleIcon} alt="gobleIcon" />
+                      {/* <img src={gobleIcon} alt="gobleIcon" /> */}
+
+                      {selected.country_code ? (
+                        <Flag
+                          country={selected.country_code}
+                          size={47}
+                          className="block"
+                        />
+                      ) : (
+                        <img src={gobleIcon} alt="gobleIcon" />
+                      )}
                     </div>
                     <div className="form-group w-full">
                       <label htmlFor="country" className="block country-label text-base">

@@ -8,7 +8,9 @@ export default function Footer() {
       <div className="w-4/5 mx-auto flex flex-col lg:flex-row ">
         <div className="text-lg font-semibold text-center lg:text-left">
           Reach us at:
-          <span className="lg:px-4 lg:border-r-2 lg:border-white block lg:inline-block">info@vaspar.org.in</span>
+          <span className="lg:px-4 lg:border-r-2 lg:border-white block lg:inline-block">
+            <a href="mailto:info@vaspar.org.in">info@vaspar.org.in</a>
+          </span>
           <span className="lg:pl-4 block lg:inline-block">+91 98802 89124</span>
         </div>
         <div className="lg:ml-auto flex items-center social-links text-center lg:text-left self-center mt-3 lg:mt-0">
