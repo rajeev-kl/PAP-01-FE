@@ -14,6 +14,7 @@ import arrowTop from "./assets/arrow-top.svg";
 import Autocomplete from "./components/Autocomplete";
 import axios from "axios";
 import logo from './assets/logo.svg'
+import currencyFormate from './utils/currencyFormate'
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -414,7 +415,7 @@ function App() {
                     </div>
                     <div className="w-full lg:w-1/2 text-center mb-4 lg:mb-0">
                       <div className="text-2xl font-bold mb-1">
-                        ₹ {value.investment_required || "N/A"}
+                        {currencyFormate(value.investment_required)}
                       </div>
                       <div className="text-sm font-semibold text-gray">
                         Investment Required
