@@ -19,7 +19,8 @@ export default function carouselProb() {
       {
         breakpoint: 640,
         settings: {
-          centerPadding: "0px",
+          centerMode: true,
+          centerPadding: "20px",
         }
       }
     ]
@@ -28,7 +29,7 @@ export default function carouselProb() {
   return (
     <Slider {...settings}>
       <div>
-        <div className="mx-4">
+        <div className="mx-2 lg:mx-4">
           <div className="photo my-8">
             <div className="h-60 bg-gray-400 rounded"></div>
           </div>
@@ -39,7 +40,7 @@ export default function carouselProb() {
         </div>
       </div>
       <div>
-        <div className="mx-4">
+        <div className="mx-2 lg:mx-4">
           <div className="photo my-8">
             <div className="h-60 bg-gray-400 rounded"></div>
           </div>
@@ -50,7 +51,7 @@ export default function carouselProb() {
         </div>
       </div>
       <div>
-        <div className="mx-4">
+        <div className="mx-2 lg:mx-4">
           <div className="photo my-8">
             <div className="h-60 bg-gray-400 rounded"></div>
           </div>

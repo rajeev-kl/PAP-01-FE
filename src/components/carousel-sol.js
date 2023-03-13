@@ -19,7 +19,8 @@ export default function carouselSol() {
       {
         breakpoint: 640,
         settings: {
-          centerPadding: "0px",
+          centerMode: true,
+          centerPadding: "20px",
         }
       }
     ]
@@ -28,7 +29,7 @@ export default function carouselSol() {
   return (
     <Slider {...settings}>
       <div>
-        <div className="mx-4">
+        <div className="mx-2 lg:mx-4">
           <div className="photo my-8">
             <div className="h-60 bg-gray-400 rounded"></div>
           </div>
@@ -39,18 +40,18 @@ export default function carouselSol() {
         </div>
       </div>
       <div>
-        <div className="mx-4">
+        <div className="mx-2 lg:mx-4">
           <div className="photo my-8">
             <div className="h-60 bg-gray-400 rounded"></div>
           </div>
           <div className="text-box">
-            <h3 className='text-xl font-semibold mb-4'>TNext-Generation Construction Panel for Modular, Sustainable Homes</h3>
+            <h3 className='text-xl font-semibold mb-4'>Next-Generation Construction Panel for Modular, Sustainable Homes</h3>
             <p className='mb-4'>Our innovative construction panel enables modular, sustainable homes with easy dismantling and reassembly, reducing waste and promoting circular economy practices. It also allows for waterless construction and improves indoor air quality through data collection.</p>
           </div>
         </div>
       </div>
       <div>
-        <div className="mx-4">
+        <div className="mx-2 lg:mx-4">
           <div className="photo my-8">
             <div className="h-60 bg-gray-400 rounded"></div>
           </div>

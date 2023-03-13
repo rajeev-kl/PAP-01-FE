@@ -54,11 +54,15 @@
   }
 
   .contact-form .footer-text {
-    padding: 0 70px;
+    padding: 0 50px;
 
 
     img {
       top: -20px;
     }
+  }
+
+  .contact-form form {
+    max-width: 100%;
   }
 }

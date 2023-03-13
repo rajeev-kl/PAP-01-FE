@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Flag from "react-flagkit";
 import "./sass/style.scss";
-import Header from "./components/header";
+// import Header from "./components/header";
 import Footer from "./components/footer";
 import CarouselProb from "./components/carousel-prob";
 import CarouselSol from "./components/carousel-sol";
@@ -13,6 +13,7 @@ import arrowTop from "./assets/arrow-top.svg";
 // import pic from './assets/image1.png'
 import Autocomplete from "./components/Autocomplete";
 import axios from "axios";
+import logo from './assets/logo.svg'
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -78,8 +79,21 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      <div className="container mx-auto content-wrapper">
+      <header >
+        <div className="container mx-auto">
+          <div className="flex flex-col lg:flex-row items-center">
+            <div className="sm:w-full md:w-1/2">
+              <img src={logo} alt="logo" className='mb-4 lg:mb-0 cursor-pointer' onClick={showFirst} />
+            </div>
+            <div className='sm:w-full md:w-1/2 font-bold uppercase tagline'>
+              <span className='block text-lg lg:text-xl'>Organizing the World's Waste</span>
+              <span className='block text-2xl'>Plastic physically and digitally.</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div className="container mx-auto content-wrapper px-4">
         <div className="flex flex-col lg:flex-row items-center">
           <div className="lg:w-1/2 lg:pr-8 mb-6 lg:mb-0">
             <img src={map} alt="map" className="mw-full" />
@@ -88,10 +102,17 @@ function App() {
             <form className="form-steps">
               <div className="form-wrapper">
                 <div className={`step-1 ${showStepOne ? "block" : "hidden"}`}>
-                  <div className="flex flex-col lg:flex-row form-heading items-center">
-                    <div className="flex text-xl items-center font-semibold">
+                  <div className="flex flex-col lg:flex-row form-heading items-start lg:items-center">
+                    <div className="text-xl flex items-center font-semibold">
                       <span className="px-4 py-2 rounded bg-gray">1</span>
                       <span className="pl-4">Let's start with you country</span>
+                    </div>
+                    <div
+                      className="btn ml-auto mr-4 hidden lg:flex"
+                      onClick={handleChangeCountry}
+                      disabled={!selected.country}
+                    >
+                      Next
                     </div>
                   </div>
                   <div className="flex align-baseline pb-7 mt-5">
@@ -99,7 +120,7 @@ function App() {
                       <img src={gobleIcon} alt="gobleIcon" />
                     </div>
                     <div className="form-group w-full">
-                      <label htmlFor="country" className="block country-label">
+                      <label htmlFor="country" className="block country-label text-base">
                         Select your country from the dropdown
                       </label>
                       <div className="country-select">
@@ -115,9 +136,9 @@ function App() {
                   {/* <div className="text-center block lg:hidden">
                     <div className='btn block w-full mx-auto' onClick={showSecond}>Next</div>
                   </div> */}
-                  <div className="ml-auto text-center lg:flex">
+                  <div className="ml-auto text-center lg:hidden flex">
                     <div
-                      className="btn ml-auto mr-4"
+                      className="btn ml-auto"
                       onClick={handleChangeCountry}
                       disabled={!selected.country}
                     >
@@ -126,14 +147,14 @@ function App() {
                   </div>
 
                   <div className="flex form-heading items-center py-7">
-                    <div className="text-xl flex items-center font-semibold text-gray-400">
+                    <div className="flex flex-col lg:flex-row form-heading items-start lg:items-center font-semibold text-gray-400">
                       <span className="px-4 py-2 rounded bg-gray">2</span>
                       <span className="pl-4">Did you know?</span>
                     </div>
                   </div>
 
                   <div className="flex form-heading items-center py-7">
-                    <div className="text-xl flex items-center font-semibold text-gray-400">
+                    <div className="flex flex-col lg:flex-row form-heading items-start lg:items-center font-semibold text-gray-400">
                       <span className="px-4 py-2 rounded bg-gray">3</span>
                       <span className="pl-4">You'll know more about us</span>
                     </div>
@@ -141,12 +162,12 @@ function App() {
                 </div>
 
                 <div className={`step-2 ${showStepTwo ? "block" : "hidden"}`}>
-                  <div className="flex flex-col lg:flex-row form-heading lg:items-center pb-7">
-                    <div className="flex text-xl w-full lg:w-auto lg:items-center font-semibold ">
+                  <div className="flex flex-col lg:flex-row form-heading form-heading items-start lg:items-center pb-7">
+                    <div className="text-xl flex w-full lg:w-auto items-center font-semibold ">
                       <span className="px-4 py-2 rounded bg-gray">1</span>
                       <span className="pl-4">You belong to</span>
                     </div>
-                    <div className="mt-3 lg:ml-auto lg:mt-0">
+                    <div className="mt-6 lg:ml-auto lg:mt-0">
                       <div className="flex items-stretch">
                         <span className="flag p-2 rounded mr-4">
                           <Flag
@@ -173,7 +194,7 @@ function App() {
                   </div>
 
                   <div className="country-info flex flex-col lg:flex-row justify-center py-4 items-center">
-                    <div className="text-center lg:order-1 sm:order-2 mt-4 lg:mt-0 lg:mr-6">
+                    <div className="text-center lg:order-1 order-2 mt-4 lg:mt-0 lg:mr-6">
                       <span className="text-lg text-gray font-semibold block mb-2">
                         {value.country} generates
                       </span>
@@ -187,7 +208,7 @@ function App() {
                     <img
                       src={bags}
                       alt="bags"
-                      className="max-w-full lg:order-2 sm:order-1 mt-4 lg:mt-0"
+                      className="max-w-full lg:order-2 order-1 mt-4 lg:mt-0"
                     />
                   </div>
 
@@ -312,9 +333,8 @@ function App() {
                 </div>
 
                 <div
-                  className={`step-final ${
-                    showStepFinal ? "block" : "hidden"
-                  } `}
+                  className={`step-final ${showStepFinal ? "block" : "hidden"
+                    } `}
                 >
                   <div className="flex form-heading items-center pb-10">
                     <div className="lg:text-xl items-center font-semibold ">
@@ -381,7 +401,7 @@ function App() {
                   </div>
 
                   <div className="flex flex-col lg:flex-row items-center lg:items-start ">
-                    <div className="w-full lg:w-1/2 text-center mb-4 lg:mb-0">
+                    <div className="w-full lg:w-1/2 text-center mb-6 lg:mb-0">
                       <div className="text-2xl font-bold mb-1">
                         {value.machines_required || "N/A"}
                       </div>
@@ -450,8 +470,8 @@ function App() {
           </div>
 
           <div className="mx-auto w-full lg:w-3/4">
-            <div className="text-center pt-14 w-11/12 mx-auto">
-              <h2 className="uppercase font-semibold text-4xl mb-2">
+            <div className="text-center py-14 w-11/12 mx-auto">
+              <h2 className="uppercase font-semibold text-4xl mb-6">
                 Plastic Age Action Plan
               </h2>
               <div className="text-2xl font-light">
@@ -465,14 +485,14 @@ function App() {
 
             <div className="contact-form">
               <div className="text-center">
-                <h3 className="font-semibold text-3xl mb-2">
+                <h3 className="font-semibold text-2xl  lg:text-3xl mb-4">
                   Now that you know why, how & what we do
                 </h3>
-                <p className="mb-4">
+                <p className="mb-6">
                   Let's get to know each other, please share us your contact
                   information (ps: if you are interested to invest on us)
                 </p>
-                <h3 className="text-2xl font-semibold mb-8">
+                <h3 className="text-xl lg:text-2xl font-semibold mb-8">
                   "Contribute to your country"
                 </h3>
               </div>
@@ -523,7 +543,7 @@ function App() {
                       }
                     />
                   </div>
-                  <div className="form-group mt-3 lg:mt-0">
+                  <div className="form-group mt-6 lg:mt-0">
                     <button
                       type="button"
                       className="btn w-full"
