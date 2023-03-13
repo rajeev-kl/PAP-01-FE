@@ -5,9 +5,10 @@ export default function currencyFormate(value) {
     return 'N/A';
   } else {
 
-    let currency = new Intl.NumberFormat('en-IN', {
+    let currency = new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'INR',
+      minimumFractionDigits: 0,
     });
 
     return currency.format(value);

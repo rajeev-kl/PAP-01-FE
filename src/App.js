@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Flag from "react-flagkit";
 import "./sass/style.scss";
-// import Header from "./components/header";
 import Footer from "./components/footer";
 import CarouselProb from "./components/carousel-prob";
 import CarouselSol from "./components/carousel-sol";
 import map from "./assets/map.svg";
-import wastage from "./assets/wastage.svg";
 import gobleIcon from "./assets/globe-icon.svg";
 import bags from "./assets/bags.svg";
 import arrowTop from "./assets/arrow-top.svg";
-// import pic from './assets/image1.png'
 import Autocomplete from "./components/Autocomplete";
 import axios from "axios";
 import logo from './assets/logo.svg'
@@ -118,8 +115,6 @@ function App() {
                   </div>
                   <div className="flex align-baseline pb-7 mt-5">
                     <div className="globe-icon self-end">
-                      {/* <img src={gobleIcon} alt="gobleIcon" /> */}
-
                       {selected.country_code ? (
                         <Flag
                           country={selected.country_code}
@@ -127,7 +122,7 @@ function App() {
                           className="block"
                         />
                       ) : (
-                        <img src={gobleIcon} alt="gobleIcon" />
+                        <img className="gobleIcon" src={gobleIcon} alt="gobleIcon" />
                       )}
                     </div>
                     <div className="form-group w-full">
@@ -420,12 +415,13 @@ function App() {
                         Number of Machines Required in
                       </div>
                       <div className="text-sm font-semibold text-gray">
-                        India to solve the problem
+                        {value.country} to solve the problem
                       </div>
                     </div>
                     <div className="w-full lg:w-1/2 text-center mb-4 lg:mb-0">
                       <div className="text-2xl font-bold mb-1">
                         {currencyFormate(value.investment_required)}
+                        {/* ₹ {value.investment_required} */}
                       </div>
                       <div className="text-sm font-semibold text-gray">
                         Investment Required
@@ -434,7 +430,6 @@ function App() {
                   </div>
                 </div>
               </div>
-              <img src={wastage} alt="wastage" className="wastage" />
             </form>
 
             <div className={`mt-6 ${showStepOne ? "hidden" : "block"}`}>
@@ -504,7 +499,7 @@ function App() {
                   information (ps: if you are interested to invest on us)
                 </p>
                 <h3 className="text-xl lg:text-2xl font-semibold mb-8">
-                  "Contribute to your country"
+                  Contribute to your country
                 </h3>
               </div>
               <form>
@@ -568,7 +563,7 @@ function App() {
               </form>
               <p className="text-center mt-5 font-semibold text-xl footer-text">
                 <span>
-                  Let's solve the plastic problem in Russia!
+                  Let's solve the plastic problem in {value.country}
                   <img src={arrowTop} alt="arrowTop" />
                 </span>
               </p>
