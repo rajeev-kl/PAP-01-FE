@@ -105,7 +105,7 @@ function App() {
                   <div className="flex flex-col lg:flex-row form-heading items-start lg:items-center">
                     <div className="text-xl flex items-center font-semibold">
                       <span className="px-4 py-2 rounded bg-gray">1</span>
-                      <span className="pl-4">Let's start with you country</span>
+                      <span className="pl-4">Let's start with your country</span>
                     </div>
                     <div
                       className="btn ml-auto mr-4 hidden lg:flex"
