@@ -109,7 +109,7 @@ function App() {
                       <span className="pl-4">Let's start with your country</span>
                     </div>
                     <div
-                      className="btn ml-auto mr-4 hidden lg:flex"
+                      className="btn ml-auto hidden lg:flex"
                       onClick={handleChangeCountry}
                       disabled={!selected.country}
                     >
@@ -139,7 +139,7 @@ function App() {
                   </div> */}
                   <div className="ml-auto text-center lg:hidden flex">
                     <div
-                      className="btn ml-auto"
+                      className="btn ml-auto w-full"
                       onClick={handleChangeCountry}
                       disabled={!selected.country}
                     >
@@ -147,15 +147,15 @@ function App() {
                     </div>
                   </div>
 
-                  <div className="flex form-heading items-center py-7">
-                    <div className="flex flex-col lg:flex-row form-heading items-start lg:items-center font-semibold text-gray-400">
+                  <div className="flex form-heading items-center py-7 w-full">
+                    <div className="flex items-center font-semibold text-gray-400">
                       <span className="px-4 py-2 rounded bg-gray">2</span>
                       <span className="pl-4">Did you know?</span>
                     </div>
                   </div>
 
-                  <div className="flex form-heading items-center py-7">
-                    <div className="flex flex-col lg:flex-row form-heading items-start lg:items-center font-semibold text-gray-400">
+                  <div className="flex form-heading items-center py-7 w-full">
+                    <div className="flex form-heading items-center font-semibold text-gray-400">
                       <span className="px-4 py-2 rounded bg-gray">3</span>
                       <span className="pl-4">You'll know more about us</span>
                     </div>
