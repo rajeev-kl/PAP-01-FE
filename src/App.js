@@ -260,7 +260,7 @@ function App() {
                     </div>
                   </div>
 
-                  <div className="flex flex-col lg:flex-row form-heading lg:items-center pb-10">
+                  <div className="flex flex-col lg:flex-row form-heading lg:items-center pt-6 pb-10">
                     <div className="text-xl items-center font-semibold flex">
                       <span className="px-4 py-2 rounded bg-gray">2</span>
                       <span className="pl-4">
@@ -290,7 +290,7 @@ function App() {
                     </div>
                   </div>
 
-                  <div className="form-group flex flex-col lg:flex-row pt-3">
+                  <div className="form-group flex flex-col lg:flex-row pt-6">
                     <div className="w-full lg:w-1/2 lg:pr-3 mb-4 lg:mb-0">
                       <label
                         htmlFor="orgName"
@@ -327,7 +327,7 @@ function App() {
                     </div>
                   </div>
 
-                  <div className="text-center w-full pt-6">
+                  <div className="text-center w-full pt-8">
                     <div
                       onClick={showFinal}
                       className="btn lg:w-1/2 lg:mx-auto"
