@@ -192,7 +192,7 @@ function App() {
                     </div>
                   </div>
 
-                  <div className="flex form-heading items-center py-4">
+                  <div className="flex form-heading items-center pt-6 pb-4">
                     <div className="text-xl items-center font-semibold">
                       <span className="px-4 py-2 rounded bg-gray">2</span>
                       <span className="pl-4">Did you know?</span>
