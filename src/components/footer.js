@@ -1,6 +1,4 @@
 import React from 'react';
-import instagram from '../assets/instagram.svg'
-import linkedin from '../assets/linkedin.svg'
 
 export default function Footer() {
   return (
@@ -15,12 +13,8 @@ export default function Footer() {
         </div>
         <div className="lg:ml-auto flex items-center social-links text-center lg:text-left self-center mt-3 lg:mt-0">
 
-          <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/" className='pr-4'>
-            <img src={linkedin} alt="linkedin" />
-          </a>
-
-          <a target="_blank" rel="noreferrer" href="https://www.instagram.com/">
-            <img src={instagram} alt="instagram" />
+          <a target="_blank" rel="noreferrer" href="https://www.youtube.com/@vasparise" className='pr-4'>
+            <img src={process.env.PUBLIC_URL + '/images/youtube.svg'} alt="" />
           </a>
         </div>
       </div>

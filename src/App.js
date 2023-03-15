@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Flag from "react-flagkit";
+import Autocomplete from "./components/Autocomplete";
+import axios from "axios";
 import "./sass/style.scss";
 import Footer from "./components/footer";
 import CarouselProb from "./components/carousel-prob";
 import CarouselSol from "./components/carousel-sol";
-import map from "./assets/map.svg";
-import gobleIcon from "./assets/globe-icon.svg";
-import bags from "./assets/bags.svg";
-import arrowTop from "./assets/arrow-top.svg";
-import Autocomplete from "./components/Autocomplete";
-import axios from "axios";
-import logo from './assets/logo.svg'
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -78,7 +73,7 @@ function App() {
         <div className="container mx-auto">
           <div className="flex flex-col lg:flex-row items-center">
             <div className="sm:w-full md:w-1/2">
-              <img src={logo} alt="logo" className='mb-4 lg:mb-0 cursor-pointer' onClick={showFirst} />
+              <img src={process.env.PUBLIC_URL + "/images/logo.svg"} alt="logo" className='mb-4 lg:mb-0 cursor-pointer' onClick={showFirst} />
             </div>
             <div className='sm:w-full md:w-1/2 font-bold uppercase tagline'>
               <span className='block text-lg lg:text-xl'>Organizing the World's Waste</span>
@@ -91,7 +86,7 @@ function App() {
       <div className="container mx-auto content-wrapper px-4">
         <div className="flex flex-col lg:flex-row items-center">
           <div className="lg:w-1/2 lg:pr-8 mb-6 lg:mb-0">
-            <img src={map} alt="map" className="mw-full" />
+            <img src={process.env.PUBLIC_URL + "/images/map.svg"} alt="map" className="mw-full" />
           </div>
           <div className="lg:w-1/2 p-3 lg:p-6">
             <form className="form-steps">
@@ -119,7 +114,7 @@ function App() {
                           className="block"
                         />
                       ) : (
-                        <img className="gobleIcon" src={gobleIcon} alt="gobleIcon" />
+                        <img className="gobleIcon" src={process.env.PUBLIC_URL + "/images/globe-icon.svg"} alt="gobleIcon" />
                       )}
                     </div>
                     <div className="form-group w-full">
@@ -208,11 +203,7 @@ function App() {
                         Plastic waste generated/annum(T)
                       </span>
                     </div>
-                    <img
-                      src={bags}
-                      alt="bags"
-                      className="max-w-full lg:order-2 order-1 mt-4 lg:mt-0"
-                    />
+                    <img src={process.env.PUBLIC_URL + "/images/bags.svg"} alt="bags" className="max-w-full lg:order-2 order-1 mt-4 lg:mt-0" />
                   </div>
 
                   <div className="action-btn flex items-center p-3 mt-4 mb-4">
@@ -514,7 +505,7 @@ function App() {
               <p className="text-center mt-5 font-semibold text-xl footer-text">
                 <span>
                   Let's solve the plastic problem in {value.country}
-                  <img src={arrowTop} alt="arrowTop" />
+                  <img src={process.env.PUBLIC_URL + "/images/arrow-top.svg"} alt="arrowTop" />
                 </span>
               </p>
             </div>
