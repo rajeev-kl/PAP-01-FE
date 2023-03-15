@@ -11,7 +11,7 @@ export default function carouselSol() {
         </div>
         <div className="text-box lg:w-3/5 mt-0 lg:mt-3">
           <h3 className='text-2xl font-semibold mb-4'>Solving the Plastic Problem with Comprehensive Tracking</h3>
-          <p className='text-xl'>A comprehensive approach to tracking plastic waste at every stage of its journey using advanced technology like RFID and blockchain can prevent plastic from ending up in landfills or oceans, solving the plastic problem and promoting a cleaner environment.</p>
+          <p className='text-lg'>A comprehensive approach to tracking plastic waste at every stage of its journey using advanced technology like RFID and blockchain can prevent plastic from ending up in landfills or oceans, solving the plastic problem and promoting a cleaner environment.</p>
         </div>
       </div>
 
@@ -21,7 +21,7 @@ export default function carouselSol() {
         </div>
         <div className="text-box lg:w-3/5 mt-0 lg:mt-3">
           <h3 className='text-2xl font-semibold mb-4'>Next-Generation Construction Panel for Modular, Sustainable Homes</h3>
-          <p className='text-xl'>Our innovative construction panel enables modular, sustainable homes with easy dismantling and reassembly, reducing waste and promoting circular economy practices. It also allows for waterless construction and improves indoor air quality through data collection.</p>
+          <p className='text-lg'>Our innovative construction panel enables modular, sustainable homes with easy dismantling and reassembly, reducing waste and promoting circular economy practices. It also allows for waterless construction and improves indoor air quality through data collection.</p>
         </div>
       </div>
 
@@ -31,7 +31,7 @@ export default function carouselSol() {
         </div>
         <div className="text-box lg:w-3/5 mt-0 lg:mt-3">
           <h3 className='text-2xl font-semibold mb-4'>Air Jacket for Energy-Efficient Home Temperature Control</h3>
-          <p className='text-xl'>The air jacket uses conduction, convection, and radiation to transfer heat and maintain a consistent indoor temperature, reducing the need for energy-consuming heating and cooling systems. This innovative technology saves energy, lowers energy bills, and reduces the carbon footprint of the house.</p>
+          <p className='text-lg'>The air jacket uses conduction, convection, and radiation to transfer heat and maintain a consistent indoor temperature, reducing the need for energy-consuming heating and cooling systems. This innovative technology saves energy, lowers energy bills, and reduces the carbon footprint of the house.</p>
         </div>
       </div>
     </div>
