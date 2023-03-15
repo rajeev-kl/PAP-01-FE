@@ -11,17 +11,17 @@ import arrowTop from "./assets/arrow-top.svg";
 import Autocomplete from "./components/Autocomplete";
 import axios from "axios";
 import logo from './assets/logo.svg'
-import currencyFormate from './utils/currencyFormate'
+import currencyFormat from './utils/currencyFormat'
 
 function App() {
   const [countries, setCountries] = useState([]);
   const [inputs, setInputs] = useState({ org_name: "", role: "" });
   const [selected, setSelected] = useState({});
   const [value, setValue] = useState({});
-  const [showStepOne, setshowStepOne] = useState(true);
+  const [showStepOne, setshowStepOne] = useState(false);
   const [showStepTwo, setshowStepTwo] = useState(false);
   const [showStepThree, setshowStepThree] = useState(false);
-  const [showStepFinal, setshowStepFinal] = useState(false);
+  const [showStepFinal, setshowStepFinal] = useState(true);
 
   useEffect(() => {
     axios
@@ -338,10 +338,7 @@ function App() {
                   </div>
                 </div>
 
-                <div
-                  className={`step-final ${showStepFinal ? "block" : "hidden"
-                    } `}
-                >
+                <div className={`step-final ${showStepFinal ? "block" : "hidden"}`}>
                   <div className="flex form-heading items-center pb-10">
                     <div className="lg:text-xl items-center font-semibold ">
                       <span className="lg:pl-4">The Actual</span>
@@ -405,29 +402,6 @@ function App() {
                       </div>
                     </div>
                   </div>
-
-                  <div className="flex flex-col lg:flex-row items-center lg:items-start ">
-                    <div className="w-full lg:w-1/2 text-center mb-6 lg:mb-0">
-                      <div className="text-2xl font-bold mb-1">
-                        {value.machines_required || "N/A"}
-                      </div>
-                      <div className="text-sm font-semibold text-gray">
-                        Number of Machines Required in
-                      </div>
-                      <div className="text-sm font-semibold text-gray">
-                        {value.country} to solve the problem
-                      </div>
-                    </div>
-                    <div className="w-full lg:w-1/2 text-center mb-4 lg:mb-0">
-                      <div className="text-2xl font-bold mb-1">
-                        {currencyFormate(value.investment_required)}
-                        {/* ₹ {value.investment_required} */}
-                      </div>
-                      <div className="text-sm font-semibold text-gray">
-                        Investment Required
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </form>
@@ -444,13 +418,36 @@ function App() {
         </div>
 
         <div className={`pt-8 ${showStepFinal ? "block" : "hidden"} `}>
-          <div className="flex flex-col lg:flex-row w-11/12 mx-auto mb-12">
-            <div className="lg:px-6 px-4 pt-6 pb-10 w-full lg:w-1/2 carousel problem lg:mr-3 rounded-2xl mb-8 lg:mb-0">
-              <div className="title">The Problem</div>
+          <div className="w-11/12 mx-auto mb-12">
+            <div className="lg:px-6 px-0 pt-6 pb-10 w-full problem mb-8">
+              <div className="title text-4xl font-bold uppercase">The Problem</div>
               <CarouselProb />
             </div>
-            <div className="lg:px-6 px-4 pt-6 pb-10 w-full lg:w-1/2 carousel solution lg:ml-3 rounded-2xl">
-              <div className="title">The Solution</div>
+            <div className="lg:px-6 px-0 pt-6 pb-10 w-full solution">
+              <div className="title text-4xl font-bold uppercase">The Solution</div>
+              <div className='mt-8 w-full lg:w-11/12 ml-auto'>
+                <div className="flex flex-col lg:flex-row items-center lg:items-start py-10">
+                  <div className="w-full lg:w-1/2 text-center mb-12 lg:mb-0">
+                    <div className="text-3xl font-bold mb-1">
+                      {value.machines_required || "N/A"}
+                    </div>
+                    <div className="text-xl font-semibold text-gray">
+                      Number of Machines Required in
+                    </div>
+                    <div className="text-xl font-semibold text-gray">
+                      {value.country} to solve the problem
+                    </div>
+                  </div>
+                  <div className="w-full lg:w-1/2 text-center mb-4 lg:mb-0">
+                    <div className="text-3xl font-bold mb-1" title={currencyFormat(value.investment_required)}>
+                      {currencyFormat(value.investment_required)}
+                    </div>
+                    <div className="text-xl font-semibold text-gray">
+                      Investment Required
+                    </div>
+                  </div>
+                </div>
+              </div>
               <CarouselSol />
             </div>
           </div>

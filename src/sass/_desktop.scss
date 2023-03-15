@@ -12,6 +12,10 @@ body {
   .container {
     position: relative;
   }
+
+  .text-gray {
+    color: #656565
+  }
 }
 
 header {
@@ -211,10 +215,6 @@ form.form-steps {
     min-width: 100px;
     width: 100%;
     max-width: 200px;
-  }
-
-  .text-gray {
-    color: #656565
   }
 
   .action-btn {
