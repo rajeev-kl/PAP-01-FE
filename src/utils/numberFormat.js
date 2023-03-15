@@ -1,6 +1,6 @@
 import { isEmpty } from './generic';
 
-export default function currencyFormate(value) {
+export function currencyFormat(value) {
   if (isEmpty(value)) {
     return 'N/A';
   } else {
@@ -12,5 +12,17 @@ export default function currencyFormate(value) {
     });
 
     return currency.format(value);
+  }
+}
+
+export function numberFormat(value) {
+  if (isEmpty(value)) {
+    return 'N/A';
+  } else {
+    let num = new Intl.NumberFormat('en-US', {
+      minimumFractionDigits: 0,
+    });
+
+    return num.format(value);
   }
 }

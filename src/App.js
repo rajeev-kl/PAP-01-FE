@@ -11,7 +11,6 @@ import arrowTop from "./assets/arrow-top.svg";
 import Autocomplete from "./components/Autocomplete";
 import axios from "axios";
 import logo from './assets/logo.svg'
-import currencyFormat from './utils/currencyFormat'
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -360,19 +359,19 @@ function App() {
                     </div>
                   </div>
 
-                  <div className="text-center pb-10 pt-2">
+                  <div className="text-center pb-10 pt-6">
                     <span
                       className="text-3xl text-gray-900 block font-semibold mb-2 truncate"
                       title={value.waste_generated}
                     >
-                      {value.waste_generated || "N/A"}
+                      {value.waste_generated}
                     </span>
                     <span className="text-xl text-gray font-semibold">
                       Plastic waste generated (T/Yr)
                     </span>
                   </div>
 
-                  <div className="flex flex-col lg:flex-row items-center lg:items-start pb-10">
+                  <div className="flex flex-col lg:flex-row items-center lg:items-start py-6">
                     <div className="w-full lg:w-1/3 text-center mb-4 lg:mb-0">
                       <div className="text-2xl font-bold mb-1">
                         {value.gdp || "N/A"}
@@ -387,16 +386,15 @@ function App() {
                         {value.land_area || "N/A"}
                       </div>
                       <div className="text-sm font-semibold text-gray">
-                        Land Area(2020)
+                        Land Area Percentage
                       </div>
-                      <div className="text-xs text-gray">Sq Km</div>
                     </div>
                     <div className="w-full lg:w-1/3 text-center">
                       <div className="text-2xl font-bold mb-1">
                         {value.population || "N/A"}
                       </div>
                       <div className="text-sm font-semibold text-gray">
-                        Population(2017)
+                        Population Percentage
                       </div>
                     </div>
                   </div>
@@ -405,10 +403,7 @@ function App() {
             </form>
 
             <div className={`mt-6 ${showStepOne ? "hidden" : "block"}`}>
-              <span
-                onClick={showFirst}
-                className="text-center block italic underline text-gray-900 cursor-pointer"
-              >
+              <span onClick={showFirst} className="text-center block italic underline text-gray-900 cursor-pointer" >
                 Back to country selection
               </span>
             </div>
@@ -417,36 +412,13 @@ function App() {
 
         <div className={`pt-8 ${showStepFinal ? "block" : "hidden"} `}>
           <div className="w-11/12 mx-auto mb-12">
-            <div className="lg:px-6 px-0 pt-6 pb-10 w-full problem mb-8">
+            <div className="lg:px-6 px-0 pt-6 pb-10 w-full article mb-8">
               <div className="title text-4xl font-bold uppercase">The Problem</div>
               <CarouselProb />
             </div>
-            <div className="lg:px-6 px-0 pt-6 pb-10 w-full solution">
-              <div className="title text-4xl font-bold uppercase">The Solution</div>
-              <div className='mt-8 w-full lg:w-11/12 ml-auto'>
-                <div className="flex flex-col lg:flex-row items-center lg:items-start py-10">
-                  <div className="w-full lg:w-1/2 text-center mb-12 lg:mb-0">
-                    <div className="text-3xl font-bold mb-1">
-                      {value.machines_required || "N/A"}
-                    </div>
-                    <div className="text-xl font-semibold text-gray">
-                      Number of Machines Required in
-                    </div>
-                    <div className="text-xl font-semibold text-gray">
-                      {value.country} to solve the problem
-                    </div>
-                  </div>
-                  <div className="w-full lg:w-1/2 text-center mb-4 lg:mb-0">
-                    <div className="text-3xl font-bold mb-1" title={currencyFormat(value.investment_required)}>
-                      {currencyFormat(value.investment_required)}
-                    </div>
-                    <div className="text-xl font-semibold text-gray">
-                      Investment Required
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <CarouselSol />
+            <div className="lg:px-6 px-0 pt-6 pb-10 w-full article">
+              <div className="title text-4xl font-bold uppercase ">The Solution</div>
+              <CarouselSol valueDetails={value} />
             </div>
           </div>
 
@@ -456,17 +428,7 @@ function App() {
               Circular Economy
             </h2>
             <p className="leading-8	text-lg mb-0">
-              To tackle the global problem of plastic waste, VASPAR has
-              implemented a blockchain solution that tracks plastic from
-              production to recycling, while leveraging Extended Producer
-              Responsibility (EPR) policies. By promoting responsible production
-              and consumption practices, VASPAR facilitates a sustainable
-              ecosystem that aims to reduce the plastic waste crisis. The
-              company uses blockchain technology to ensure transparency and
-              traceability throughout the supply chain. Additionally, VASPAR is
-              committed to a circular economy by using waste plastic to build
-              homes, demonstrating that plastic can have a valuable second life
-              and reduce environmental impact.
+              To tackle the global problem of plastic waste, VASPAR has implemented a blockchain solution that tracks plastic from production to recycling, while leveraging Extended Producer Responsibility (EPR) policies. By promoting responsible production and consumption practices, VASPAR facilitates a sustainable ecosystem that aims to reduce the plastic waste crisis. The company uses blockchain technology to ensure transparency and traceability throughout the supply chain. Additionally, VASPAR is committed to a circular economy by using waste plastic to build homes, demonstrating that plastic can have a valuable second life and reduce environmental impact.
             </p>
           </div>
 
@@ -479,10 +441,6 @@ function App() {
                 Let's stop burning, burying & floating plastic
               </div>
             </div>
-
-            {/* <div className="pt-10 pb-12 mx-auto w-full lg:w-11/12">
-              <img src={pic} alt="pic" />
-            </div> */}
 
             <div className="contact-form">
               <div className="text-center">
