@@ -413,20 +413,17 @@ function App() {
         <div className={`pt-8 ${showStepFinal ? "block" : "hidden"} `}>
           <div className="w-11/12 mx-auto mb-12">
             <div className="lg:px-6 px-0 pt-6 pb-10 w-full article mb-8">
-              <div className="title text-4xl font-bold uppercase">The Problem</div>
+              <div className="title text-4xl font-bold uppercase pb-6">The Problem</div>
               <CarouselProb />
             </div>
             <div className="lg:px-6 px-0 pt-6 pb-10 w-full article">
-              <div className="title text-4xl font-bold uppercase ">The Solution</div>
+              <div className="title text-4xl font-bold uppercase pb-6">The Solution</div>
               <CarouselSol valueDetails={value} />
             </div>
           </div>
 
           <div className="mx-auto w-11/12">
-            <h2 className="mb-3 pb-1 text-3xl font-semibold leading-relaxed">
-              VASPAR's Blockchain Solution Promotes Sustainable Practices for a
-              Circular Economy
-            </h2>
+            <h2 className="mb-3 pb-1 text-3xl font-semibold leading-relaxed">VASPAR's Blockchain Solution Promotes Sustainable Practices for a Circular Economy</h2>
             <p className="leading-8	text-lg mb-0">
               To tackle the global problem of plastic waste, VASPAR has implemented a blockchain solution that tracks plastic from production to recycling, while leveraging Extended Producer Responsibility (EPR) policies. By promoting responsible production and consumption practices, VASPAR facilitates a sustainable ecosystem that aims to reduce the plastic waste crisis. The company uses blockchain technology to ensure transparency and traceability throughout the supply chain. Additionally, VASPAR is committed to a circular economy by using waste plastic to build homes, demonstrating that plastic can have a valuable second life and reduce environmental impact.
             </p>

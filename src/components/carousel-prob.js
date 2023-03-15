@@ -31,7 +31,7 @@ export default function carouselProb() {
         </div>
         <div className="text-box lg:w-3/5 mt-0 lg:mt-3">
           <h3 className='text-2xl font-semibold mb-4'>Glass and Concrete Buildings - Inefficient Human Habitats</h3>
-          <p className='mb-4 text-lg'>Most collected plastic ends up being burnt, buried, or floating, releasing toxins, leaching chemicals, and posing a threat to marine life.</p>
+          <p className='mb-4 text-lg'>Glass and concrete buildings are heat sinks that require high energy consumption for cooling and heating, creating an uncomfortable indoor environment and negative impact on health and productivity.</p>
         </div>
       </div>
     </div>

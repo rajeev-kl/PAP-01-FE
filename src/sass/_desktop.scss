@@ -384,3 +384,18 @@ footer {
     }
   }
 }
+
+.article {
+
+  .text-2xl {
+    line-height: 1.6;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  img {
+    border: solid 1px rgba(#000, 0.2);
+  }
+}
