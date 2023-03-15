@@ -1,18 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Flag from "react-flagkit";
+import Autocomplete from "./components/Autocomplete";
+import axios from "axios";
 import "./sass/style.scss";
-import Header from "./components/header";
 import Footer from "./components/footer";
 import CarouselProb from "./components/carousel-prob";
 import CarouselSol from "./components/carousel-sol";
-import map from "./assets/map.svg";
-import wastage from "./assets/wastage.svg";
-import gobleIcon from "./assets/globe-icon.svg";
-import bags from "./assets/bags.svg";
-import arrowTop from "./assets/arrow-top.svg";
-// import pic from './assets/image1.png'
-import Autocomplete from "./components/Autocomplete";
-import axios from "axios";
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -46,8 +39,6 @@ function App() {
     showSecond();
   };
 
-  console.log("selected country", selected);
-
   const showFirst = () => {
     setValue({});
     setSelected({});
@@ -78,29 +69,40 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <header >
+        <div className="container mx-auto">
+          <div className="flex flex-col lg:flex-row items-center">
+            <div className="sm:w-full md:w-1/2">
+              <img src={process.env.PUBLIC_URL + "/images/logo.svg"} alt="logo" className='mb-4 lg:mb-0 cursor-pointer' onClick={showFirst} />
+            </div>
+            <div className='sm:w-full md:w-1/2 font-bold uppercase tagline'>
+              <span className='block text-lg lg:text-xl'>Organizing the World's Waste</span>
+              <span className='block text-2xl'>Plastic physically and digitally.</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
       <div className="container mx-auto content-wrapper px-4">
         <div className="flex flex-col lg:flex-row items-center">
           <div className="lg:w-1/2 lg:pr-8 mb-6 lg:mb-0">
-            <img src={map} alt="map" className="mw-full" />
+            <img src={process.env.PUBLIC_URL + "/images/map.svg"} alt="map" className="mw-full" />
           </div>
           <div className="lg:w-1/2 p-3 lg:p-6">
             <form className="form-steps">
               <div className="form-wrapper">
                 <div className={`step-1 ${showStepOne ? "block" : "hidden"}`}>
-                  <div className="flex flex-col lg:flex-row form-heading items-center">
-                    <div className="flex text-xl items-center font-semibold">
+                  <div className="flex flex-col lg:flex-row form-heading items-start lg:items-center">
+                    <div className="text-xl flex items-center font-semibold">
                       <span className="px-4 py-2 rounded bg-gray">1</span>
-                      <span className="pl-4">Let's start with you country</span>
+                      <span className="pl-4">Let's start with your country</span>
                     </div>
-                    <div className="ml-auto hidden lg:flex">
-                      <div
-                        className="btn ml-auto mr-4"
-                        onClick={handleChangeCountry}
-                        disabled={!selected.country}
-                      >
-                        Next
-                      </div>
+                    <div
+                      className="btn ml-auto hidden lg:flex"
+                      onClick={handleChangeCountry}
+                      disabled={!selected.country}
+                    >
+                      Next
                     </div>
                   </div>
                   <div className="flex align-baseline pb-7 mt-5">
@@ -108,15 +110,15 @@ function App() {
                       {selected.country_code ? (
                         <Flag
                           country={selected.country_code}
-                          size={46}
+                          size={47}
                           className="block"
                         />
                       ) : (
-                        <img src={gobleIcon} alt="gobleIcon" />
+                        <img className="gobleIcon" src={process.env.PUBLIC_URL + "/images/globe-icon.svg"} alt="gobleIcon" />
                       )}
                     </div>
                     <div className="form-group w-full">
-                      <label htmlFor="country" className="block country-label">
+                      <label htmlFor="country" className="block country-label text-base">
                         Select your country from the dropdown
                       </label>
                       <div className="country-select">
@@ -129,24 +131,28 @@ function App() {
                       </div>
                     </div>
                   </div>
-                  <div className="text-center block lg:hidden">
+                  {/* <div className="text-center block lg:hidden">
+                    <div className='btn block w-full mx-auto' onClick={showSecond}>Next</div>
+                  </div> */}
+                  <div className="ml-auto text-center lg:hidden flex">
                     <div
-                      className="btn block w-full mx-auto"
-                      onClick={showSecond}
+                      className="btn ml-auto w-full"
+                      onClick={handleChangeCountry}
+                      disabled={!selected.country}
                     >
                       Next
                     </div>
                   </div>
 
-                  <div className="flex form-heading items-center py-7">
-                    <div className="text-xl flex items-center font-semibold text-gray-400">
+                  <div className="flex form-heading items-center py-7 w-full">
+                    <div className="flex items-center font-semibold text-gray-400">
                       <span className="px-4 py-2 rounded bg-gray">2</span>
                       <span className="pl-4">Did you know?</span>
                     </div>
                   </div>
 
-                  <div className="flex form-heading items-center py-7">
-                    <div className="text-xl flex items-center font-semibold text-gray-400">
+                  <div className="flex form-heading items-center py-7 w-full">
+                    <div className="flex form-heading items-center font-semibold text-gray-400">
                       <span className="px-4 py-2 rounded bg-gray">3</span>
                       <span className="pl-4">You'll know more about us</span>
                     </div>
@@ -154,31 +160,31 @@ function App() {
                 </div>
 
                 <div className={`step-2 ${showStepTwo ? "block" : "hidden"}`}>
-                  <div className="flex flex-col lg:flex-row form-heading lg:items-center pb-7">
-                    <div className="flex text-xl w-full lg:w-auto lg:items-center font-semibold ">
+                  <div className="flex flex-col lg:flex-row form-heading form-heading items-start lg:items-center pb-7">
+                    <div className="text-xl flex w-full lg:w-auto items-center font-semibold ">
                       <span className="px-4 py-2 rounded bg-gray">1</span>
                       <span className="pl-4">You belong to</span>
                     </div>
-                    <div className="mt-3 lg:ml-auto lg:mt-0">
+                    <div className="mt-6 lg:ml-auto lg:mt-0">
                       <div className="flex items-stretch">
                         <span className="flag p-2 rounded mr-4">
                           <Flag
-                            country={selected.country_code}
+                            country={value.country_code}
                             size={46}
                             className="block"
                           />
                         </span>
                         <span
                           className="country bg-gray py-2 text-center rounded font-bold truncate"
-                          title={selected.country}
+                          title={value.country}
                         >
-                          {selected.country}
+                          {value.country}
                         </span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="flex form-heading items-center py-4">
+                  <div className="flex form-heading items-center pt-6 pb-4">
                     <div className="text-xl items-center font-semibold">
                       <span className="px-4 py-2 rounded bg-gray">2</span>
                       <span className="pl-4">Did you know?</span>
@@ -186,22 +192,18 @@ function App() {
                   </div>
 
                   <div className="country-info flex flex-col lg:flex-row justify-center py-4 items-center">
-                    <div className="text-center lg:order-1 sm:order-2 mt-4 lg:mt-0 lg:mr-6">
+                    <div className="text-center lg:order-1 order-2 mt-4 lg:mt-0 lg:mr-6">
                       <span className="text-lg text-gray font-semibold block mb-2">
-                        {selected?.country} generates
+                        {value.country} generates
                       </span>
                       <span className="text-4xl text-gray-900 block font-semibold mb-2">
-                        {selected?.waste_generated}
+                        {value.waste_generated}
                       </span>
                       <span className="text-lg text-gray font-semibold block">
                         Plastic waste generated/annum(T)
                       </span>
                     </div>
-                    <img
-                      src={bags}
-                      alt="bags"
-                      className="max-w-full lg:order-2 sm:order-1 mt-4 lg:mt-0"
-                    />
+                    <img src={process.env.PUBLIC_URL + "/images/bags.svg"} alt="bags" className="max-w-full lg:order-2 order-1 mt-4 lg:mt-0" />
                   </div>
 
                   <div className="action-btn flex items-center p-3 mt-4 mb-4">
@@ -231,22 +233,22 @@ function App() {
                       <div className="flex items-stretch">
                         <span className="flag p-2 rounded mr-4">
                           <Flag
-                            country={selected?.country_code}
+                            country={value.country_code}
                             size={46}
                             className="block"
                           />
                         </span>
                         <span
                           className="country bg-gray py-2 text-center rounded font-bold truncate"
-                          title={selected?.country}
+                          title={value.country}
                         >
-                          {selected?.country}
+                          {value.country}
                         </span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="flex flex-col lg:flex-row form-heading lg:items-center pb-10">
+                  <div className="flex flex-col lg:flex-row form-heading lg:items-center pt-6 pb-10">
                     <div className="text-xl items-center font-semibold flex">
                       <span className="px-4 py-2 rounded bg-gray">2</span>
                       <span className="pl-4">
@@ -260,9 +262,9 @@ function App() {
                     <div className="mt-4 lg:mt-0 lg:ml-auto">
                       <span
                         className="text-3xl text-gray-900 block font-semibold mb-2 truncate"
-                        title={selected?.waste_generated}
+                        title={value.waste_generated}
                       >
-                        {selected?.waste_generated}
+                        {value.waste_generated}
                       </span>
                     </div>
                   </div>
@@ -276,7 +278,7 @@ function App() {
                     </div>
                   </div>
 
-                  <div className="form-group flex flex-col lg:flex-row pt-3">
+                  <div className="form-group flex flex-col lg:flex-row pt-6">
                     <div className="w-full lg:w-1/2 lg:pr-3 mb-4 lg:mb-0">
                       <label
                         htmlFor="orgName"
@@ -313,7 +315,7 @@ function App() {
                     </div>
                   </div>
 
-                  <div className="text-center w-full pt-6">
+                  <div className="text-center w-full pt-8">
                     <div
                       onClick={showFinal}
                       className="btn lg:w-1/2 lg:mx-auto"
@@ -324,12 +326,8 @@ function App() {
                   </div>
                 </div>
 
-                <div
-                  className={`step-final ${
-                    showStepFinal ? "block" : "hidden"
-                  } `}
-                >
-                  <div className="flex form-heading items-center pb-10">
+                <div className={`step-final ${showStepFinal ? "block" : "hidden"}`}>
+                  <div className="flex form-heading items-center pb-5">
                     <div className="lg:text-xl items-center font-semibold ">
                       <span className="lg:pl-4">The Actual</span>
                     </div>
@@ -337,37 +335,37 @@ function App() {
                       <div className="flex items-stretch">
                         <span className="flag p-2 rounded mr-4">
                           <Flag
-                            country={selected?.country_code}
+                            country={value.country_code}
                             size={46}
                             className="block"
                           />
                         </span>
                         <span
                           className="country bg-gray py-2 text-center rounded font-bold truncate"
-                          title={selected?.country}
+                          title={value.country}
                         >
-                          {selected?.country}
+                          {value.country}
                         </span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="text-center pb-10 pt-2">
+                  <div className="text-center pb-10 pt-6">
                     <span
                       className="text-3xl text-gray-900 block font-semibold mb-2 truncate"
-                      title={selected?.waste_generated}
+                      title={value.waste_generated}
                     >
-                      {selected?.waste_generated || "N/A"}
+                      {value.waste_generated}
                     </span>
                     <span className="text-xl text-gray font-semibold">
                       Plastic waste generated (T/Yr)
                     </span>
                   </div>
 
-                  <div className="flex flex-col lg:flex-row items-center lg:items-start pb-10">
+                  <div className="flex flex-col lg:flex-row items-center lg:items-start py-6">
                     <div className="w-full lg:w-1/3 text-center mb-4 lg:mb-0">
                       <div className="text-2xl font-bold mb-1">
-                        {selected?.gdp || "N/A"}
+                        {value.gdp || "N/A"}
                       </div>
                       <div className="text-sm font-semibold text-gray">
                         GDP(abbrev.)
@@ -376,54 +374,27 @@ function App() {
                     </div>
                     <div className="w-full lg:w-1/3 text-center mb-4 lg:mb-0">
                       <div className="text-2xl font-bold mb-1">
-                        {selected?.land_area || "N/A"}
+                        {value.land_area_percent || "N/A"}
                       </div>
                       <div className="text-sm font-semibold text-gray">
-                        Land Area(2020)
+                        Land Area Percentage
                       </div>
-                      <div className="text-xs text-gray">Sq Km</div>
                     </div>
                     <div className="w-full lg:w-1/3 text-center">
                       <div className="text-2xl font-bold mb-1">
-                        {selected?.population || "N/A"}
+                        {value.population_percent || "N/A"}
                       </div>
                       <div className="text-sm font-semibold text-gray">
-                        Population(2017)
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col lg:flex-row items-center lg:items-start ">
-                    <div className="w-full lg:w-1/2 text-center mb-4 lg:mb-0">
-                      <div className="text-2xl font-bold mb-1">
-                        {selected?.machines_required || "N/A"}
-                      </div>
-                      <div className="text-sm font-semibold text-gray">
-                        Number of Machines Required in
-                      </div>
-                      <div className="text-sm font-semibold text-gray">
-                        India to solve the problem
-                      </div>
-                    </div>
-                    <div className="w-full lg:w-1/2 text-center mb-4 lg:mb-0">
-                      <div className="text-2xl font-bold mb-1">
-                        ₹ {selected?.investment_required || "N/A"}
-                      </div>
-                      <div className="text-sm font-semibold text-gray">
-                        Investment Required
+                        Population Percentage
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <img src={wastage} alt="wastage" className="wastage" />
             </form>
 
             <div className={`mt-6 ${showStepOne ? "hidden" : "block"}`}>
-              <span
-                onClick={showFirst}
-                className="text-center block italic underline text-gray-900 cursor-pointer"
-              >
+              <span onClick={showFirst} className="text-center block italic underline text-gray-900 cursor-pointer" >
                 Back to country selection
               </span>
             </div>
@@ -431,40 +402,27 @@ function App() {
         </div>
 
         <div className={`pt-8 ${showStepFinal ? "block" : "hidden"} `}>
-          <div className="flex flex-col lg:flex-row w-11/12 mx-auto mb-12">
-            <div className="lg:px-6 px-4 pt-6 pb-10 w-full lg:w-1/2 carousel problem lg:mr-3 rounded-2xl mb-8 lg:mb-0">
-              <div className="title">The Problem</div>
+          <div className="w-11/12 mx-auto mb-12">
+            <div className="lg:px-6 px-0 pt-6 pb-10 w-full article mb-8">
+              <div className="title text-4xl font-bold uppercase pb-6">The Problem</div>
               <CarouselProb />
             </div>
-            <div className="lg:px-6 px-4 pt-6 pb-10 w-full lg:w-1/2 carousel solution lg:ml-3 rounded-2xl">
-              <div className="title">The Solution</div>
-              <CarouselSol />
+            <div className="lg:px-6 px-0 pt-6 pb-10 w-full article">
+              <div className="title text-4xl font-bold uppercase pb-6">The Solution</div>
+              <CarouselSol valueDetails={value} />
             </div>
           </div>
 
           <div className="mx-auto w-11/12">
-            <h2 className="mb-3 pb-1 text-3xl font-semibold leading-relaxed">
-              VASPAR's Blockchain Solution Promotes Sustainable Practices for a
-              Circular Economy
-            </h2>
+            <h2 className="mb-3 pb-1 text-3xl font-semibold leading-relaxed">VASPAR's Blockchain Solution Promotes Sustainable Practices for a Circular Economy</h2>
             <p className="leading-8	text-lg mb-0">
-              To tackle the global problem of plastic waste, VASPAR has
-              implemented a blockchain solution that tracks plastic from
-              production to recycling, while leveraging Extended Producer
-              Responsibility (EPR) policies. By promoting responsible production
-              and consumption practices, VASPAR facilitates a sustainable
-              ecosystem that aims to reduce the plastic waste crisis. The
-              company uses blockchain technology to ensure transparency and
-              traceability throughout the supply chain. Additionally, VASPAR is
-              committed to a circular economy by using waste plastic to build
-              homes, demonstrating that plastic can have a valuable second life
-              and reduce environmental impact.
+              To tackle the global problem of plastic waste, VASPAR has implemented a blockchain solution that tracks plastic from production to recycling, while leveraging Extended Producer Responsibility (EPR) policies. By promoting responsible production and consumption practices, VASPAR facilitates a sustainable ecosystem that aims to reduce the plastic waste crisis. The company uses blockchain technology to ensure transparency and traceability throughout the supply chain. Additionally, VASPAR is committed to a circular economy by using waste plastic to build homes, demonstrating that plastic can have a valuable second life and reduce environmental impact.
             </p>
           </div>
 
           <div className="mx-auto w-full lg:w-3/4">
-            <div className="text-center pt-14 w-11/12 mx-auto">
-              <h2 className="uppercase font-semibold text-4xl mb-2">
+            <div className="text-center py-14 w-11/12 mx-auto">
+              <h2 className="uppercase font-semibold text-4xl mb-6">
                 Plastic Age Action Plan
               </h2>
               <div className="text-2xl font-light">
@@ -472,21 +430,17 @@ function App() {
               </div>
             </div>
 
-            {/* <div className="pt-10 pb-12 mx-auto w-full lg:w-11/12">
-              <img src={pic} alt="pic" />
-            </div> */}
-
             <div className="contact-form">
               <div className="text-center">
-                <h3 className="font-semibold text-3xl mb-2">
+                <h3 className="font-semibold text-2xl  lg:text-3xl mb-4">
                   Now that you know why, how & what we do
                 </h3>
-                <p className="mb-4">
+                <p className="mb-6">
                   Let's get to know each other, please share us your contact
                   information (ps: if you are interested to invest on us)
                 </p>
-                <h3 className="text-2xl font-semibold mb-8">
-                  "Contribute to your country"
+                <h3 className="text-xl lg:text-2xl font-semibold mb-8">
+                  Contribute to your country
                 </h3>
               </div>
               <form>
@@ -536,7 +490,7 @@ function App() {
                       }
                     />
                   </div>
-                  <div className="form-group mt-3 lg:mt-0">
+                  <div className="form-group mt-6 lg:mt-0">
                     <button
                       type="button"
                       className="btn w-full"
@@ -550,8 +504,8 @@ function App() {
               </form>
               <p className="text-center mt-5 font-semibold text-xl footer-text">
                 <span>
-                  Let's solve the plastic problem in Russia!
-                  <img src={arrowTop} alt="arrowTop" />
+                  Let's solve the plastic problem in {value.country}
+                  <img src={process.env.PUBLIC_URL + "/images/arrow-top.svg"} alt="arrowTop" />
                 </span>
               </p>
             </div>
