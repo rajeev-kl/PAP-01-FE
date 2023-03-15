@@ -18,10 +18,10 @@ function App() {
   const [inputs, setInputs] = useState({ org_name: "", role: "" });
   const [selected, setSelected] = useState({});
   const [value, setValue] = useState({});
-  const [showStepOne, setshowStepOne] = useState(false);
+  const [showStepOne, setshowStepOne] = useState(true);
   const [showStepTwo, setshowStepTwo] = useState(false);
   const [showStepThree, setshowStepThree] = useState(false);
-  const [showStepFinal, setshowStepFinal] = useState(true);
+  const [showStepFinal, setshowStepFinal] = useState(false);
 
   useEffect(() => {
     axios
