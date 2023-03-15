@@ -45,8 +45,6 @@ function App() {
     showSecond();
   };
 
-  console.log(value);
-
   const showFirst = () => {
     setValue({});
     setSelected({});
@@ -339,7 +337,7 @@ function App() {
                 </div>
 
                 <div className={`step-final ${showStepFinal ? "block" : "hidden"}`}>
-                  <div className="flex form-heading items-center pb-10">
+                  <div className="flex form-heading items-center pb-5">
                     <div className="lg:text-xl items-center font-semibold ">
                       <span className="lg:pl-4">The Actual</span>
                     </div>
