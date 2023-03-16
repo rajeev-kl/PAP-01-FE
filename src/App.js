@@ -374,7 +374,11 @@ function App() {
                     </div>
                     <div className="w-full lg:w-1/3 text-center mb-4 lg:mb-0">
                       <div className="text-2xl font-bold mb-1">
-                        {value.land_area_percent || "N/A"}
+                        {
+                          value.land_area_percent ?
+                            value.land_area_percent + "%" :
+                            "N/A"
+                        }
                       </div>
                       <div className="text-sm font-semibold text-gray">
                         Land Area Percentage
@@ -382,7 +386,11 @@ function App() {
                     </div>
                     <div className="w-full lg:w-1/3 text-center">
                       <div className="text-2xl font-bold mb-1">
-                        {value.population_percent || "N/A"}
+                        {
+                          value.population_percent ?
+                            value.population_percent + "%" :
+                            "N/A"
+                        }
                       </div>
                       <div className="text-sm font-semibold text-gray">
                         Population Percentage
